@@ -6,88 +6,90 @@ const games = [
 
   {
     name:"918KISS",
-    image:"images/918kiss.png"
+    image:"./images/918kiss.png?v=3"
   },
 
   {
     name:"MEGA888",
-    image:"images/mega888.png"
+    image:"./images/mega888.png?v=3"
   },
 
   {
     name:"EVO888",
-    image:"images/evo888.png"
+    image:"./images/evo888.png?v=3"
   },
 
   {
     name:"PUSSY888",
-    image:"images/pussy888.png"
+    image:"./images/pussy888.png?v=3"
   },
 
   {
     name:"918KAYA",
-    image:"images/918kaya.png"
+    image:"./images/918kaya.png?v=3"
   },
 
   {
     name:"NEWTOWN",
-    image:"images/newtown.png"
+    image:"./images/newtown.png?v=3"
   },
 
   {
     name:"SUNCITY",
-    image:"images/suncity.png"
+    image:"./images/suncity.png?v=3"
   },
 
   {
     name:"WWBET",
-    image:"images/wwbet.png"
+    image:"./images/wwbet.png?v=3"
   },
 
   {
     name:"ACE333",
-    image:"images/ace333.png"
+    image:"./images/ace333.png?v=3"
   },
 
   {
     name:"LIVE22",
-    image:"images/live22.png"
+    image:"./images/live22.png?v=3"
   },
 
   {
     name:"JOKER",
-    image:"images/joker.png"
+    image:"./images/joker.png?v=3"
   },
 
   {
     name:"918KISS H5",
-    image:"images/918kiss-h5.png"
+    image:"./images/918kiss-h5.png?v=3"
   },
 
   {
     name:"GREAT WALL",
-    image:"images/greatwall.png"
+    image:"./images/greatwall.png?v=3"
   },
 
   {
     name:"MEGA H5",
-    image:"images/mega-h5.png"
+    image:"./images/mega-h5.png?v=3"
   }
 
 ];
 
 
-/* =================================
-   HEADER
-================================= */
+/* HEADER */
 
 const header =
-  document.getElementById("header");
+  document.getElementById(
+    "header"
+  );
 
 
 function updateHeader(){
 
-  if(window.scrollY > 20){
+  if(
+    window.scrollY > 20
+  ){
 
     header.classList.add(
       "scrolled"
@@ -116,9 +118,7 @@ window.addEventListener(
 updateHeader();
 
 
-/* =================================
-   DETECT SCROLL DIRECTION
-================================= */
+/* SCROLL */
 
 let lastScrollY =
   window.scrollY;
@@ -132,20 +132,18 @@ window.addEventListener(
   "scroll",
   () => {
 
-    const currentScrollY =
+    const current =
       window.scrollY;
 
 
     if(
       Math.abs(
-        currentScrollY -
-        lastScrollY
+        current - lastScrollY
       ) > 2
     ){
 
       scrollDirection =
-        currentScrollY >
-        lastScrollY
+        current > lastScrollY
           ? "down"
           : "up";
 
@@ -153,19 +151,16 @@ window.addEventListener(
 
 
     lastScrollY =
-      currentScrollY;
+      current;
 
   },
-
   {
     passive:true
   }
 );
 
 
-/* =================================
-   ULTRA SMOOTH REVEAL
-================================= */
+/* REVEAL */
 
 const revealElements =
   document.querySelectorAll(
@@ -189,22 +184,12 @@ if(
               entry.target;
 
 
-            /* MASUK VIEWPORT */
-
             if(
               entry.isIntersecting
             ){
 
-              requestAnimationFrame(
-                () => {
-
-                  element
-                    .classList
-                    .add(
-                      "visible"
-                    );
-
-                }
+              element.classList.add(
+                "visible"
               );
 
 
@@ -213,19 +198,9 @@ if(
             }
 
 
-            /*
-              RESET HANYA BILA
-              SUDAH JAUH DARI VIEWPORT
-            */
-
             const rect =
-              element
-                .getBoundingClientRect();
+              element.getBoundingClientRect();
 
-
-            /*
-              SCROLL KE ATAS
-            */
 
             if(
               scrollDirection === "up" &&
@@ -233,29 +208,21 @@ if(
               window.innerHeight + 140
             ){
 
-              element
-                .classList
-                .remove(
-                  "visible"
-                );
+              element.classList.remove(
+                "visible"
+              );
 
             }
 
-
-            /*
-              SCROLL KE BAWAH
-            */
 
             if(
               scrollDirection === "down" &&
               rect.bottom < -140
             ){
 
-              element
-                .classList
-                .remove(
-                  "visible"
-                );
+              element.classList.remove(
+                "visible"
+              );
 
             }
 
@@ -299,9 +266,7 @@ if(
 }
 
 
-/* =================================
-   LIVE DEMO
-================================= */
+/* LIVE DEMO */
 
 const tickerTrack =
   document.getElementById(
@@ -327,10 +292,6 @@ function randomNumber(
 
 }
 
-
-/* =================================
-   MASKED MALAYSIA PHONE
-================================= */
 
 function randomMaskedPhone(){
 
@@ -358,21 +319,13 @@ function randomMaskedPhone(){
     ];
 
 
-  const last =
-    randomNumber(
-      1000,
-      9999
-    );
-
-
-  return `${prefix}-XXX-${last}`;
+  return `${prefix}-XXX-${randomNumber(
+    1000,
+    9999
+  )}`;
 
 }
 
-
-/* =================================
-   PROVIDER SHUFFLE
-================================= */
 
 function shuffleArray(array){
 
@@ -429,16 +382,11 @@ function refillProviderQueue(){
 
   if(
     providerQueue.length > 1 &&
-    providerQueue[0] ===
-    lastProvider
+    providerQueue[0] === lastProvider
   ){
 
-    const first =
-      providerQueue.shift();
-
-
     providerQueue.push(
-      first
+      providerQueue.shift()
     );
 
   }
@@ -490,15 +438,7 @@ function getNextProvider(){
 }
 
 
-/* =================================
-   JOIN
-================================= */
-
 function createJoin(){
-
-  const provider =
-    getNextProvider();
-
 
   return `
 
@@ -513,7 +453,7 @@ function createJoin(){
       </span>
 
       <span class="transaction-value">
-        ${provider}
+        ${getNextProvider()}
       </span>
 
     </div>
@@ -523,71 +463,48 @@ function createJoin(){
 }
 
 
-/* =================================
-   IN AMOUNT
-================================= */
-
 function getRandomInAmount(){
 
   const chance =
     Math.random();
 
 
-  /*
-    15%
-    RM10 - RM50
-  */
-
   if(
     chance < .15
   ){
 
-    const smallAmounts = [
-
+    const amounts = [
       10,
       20,
       30,
       40,
       50
-
     ];
 
 
-    return smallAmounts[
+    return amounts[
       randomNumber(
         0,
-        smallAmounts.length - 1
+        amounts.length - 1
       )
     ];
 
   }
 
 
-  /*
-    20%
-    RM55, RM65, RM75...
-  */
-
   if(
     chance < .35
   ){
 
-    const base =
+    return (
       randomNumber(
         5,
         49
-      ) * 10;
-
-
-    return base + 5;
+      ) * 10
+    ) + 5;
 
   }
 
-
-  /*
-    65%
-    RM60, RM70, RM80...
-  */
 
   return (
     randomNumber(
@@ -599,19 +516,7 @@ function getRandomInAmount(){
 }
 
 
-/* =================================
-   IN
-================================= */
-
 function createIn(){
-
-  const provider =
-    getNextProvider();
-
-
-  const amount =
-    getRandomInAmount();
-
 
   return `
 
@@ -622,11 +527,11 @@ function createIn(){
       </span>
 
       <span class="transaction-info">
-        ${provider}
+        ${getNextProvider()}
       </span>
 
       <span class="transaction-value">
-        RM${amount}
+        RM${getRandomInAmount()}
       </span>
 
     </div>
@@ -636,29 +541,7 @@ function createIn(){
 }
 
 
-/* =================================
-   OUT
-   MINIMUM RM100
-   MAXIMUM RM1500
-================================= */
-
 function createOut(){
-
-  const provider =
-    getNextProvider();
-
-
-  /*
-    OUT tidak akan
-    di bawah RM100
-  */
-
-  const amount =
-    randomNumber(
-      100,
-      1500
-    );
-
 
   return `
 
@@ -669,11 +552,14 @@ function createOut(){
       </span>
 
       <span class="transaction-info">
-        ${provider}
+        ${getNextProvider()}
       </span>
 
       <span class="transaction-value">
-        RM${amount}
+        RM${randomNumber(
+          100,
+          1500
+        )}
       </span>
 
     </div>
@@ -682,10 +568,6 @@ function createOut(){
 
 }
 
-
-/* =================================
-   TRANSACTION SET
-================================= */
 
 function createTransactionSet(){
 
@@ -698,16 +580,11 @@ function createTransactionSet(){
     i++
   ){
 
-    html +=
-      createJoin();
+    html += createJoin();
 
+    html += createIn();
 
-    html +=
-      createIn();
-
-
-    html +=
-      createOut();
+    html += createOut();
 
   }
 
@@ -717,32 +594,23 @@ function createTransactionSet(){
 }
 
 
-/* =================================
-   SEAMLESS TICKER
-================================= */
-
 function generateTransactions(){
 
-  const transactionSet =
+  const set =
     createTransactionSet();
 
 
   tickerTrack.innerHTML = `
 
     <div class="ticker-set">
-
-      ${transactionSet}
-
+      ${set}
     </div>
-
 
     <div
       class="ticker-set"
       aria-hidden="true"
     >
-
-      ${transactionSet}
-
+      ${set}
     </div>
 
   `;
@@ -750,9 +618,7 @@ function generateTransactions(){
 }
 
 
-/* =================================
-   BONUS DATA
-================================= */
+/* BONUS */
 
 const bonuses = {
 
@@ -760,22 +626,16 @@ const bonuses = {
 
     icon:"💳",
 
-    title:
-      "Normal Deposit",
+    title:"Normal Deposit",
 
     html:`
 
       <div class="detail-main">
-
-        Tiada Bonus & Turn Over
-
+        No Bonus & No Turnover
       </div>
 
-
       <div class="detail-note">
-
-        🎮 Semua game boleh main
-
+        🎮 All games are available
       </div>
 
     `
@@ -787,23 +647,22 @@ const bonuses = {
 
     icon:"🎁",
 
-    title:
-      "Bonus 30–50%",
+    title:"Bonus 30–50%",
 
     html:`
 
       <div class="detail-row">
 
         <span>
-          IN 30
+          Deposit RM30
         </span>
 
         <strong>
-          Dapat 39
+          Receive RM39
         </strong>
 
         <b>
-          OUT 117
+          Cash Out RM117
         </b>
 
       </div>
@@ -812,15 +671,15 @@ const bonuses = {
       <div class="detail-row">
 
         <span>
-          IN 50
+          Deposit RM50
         </span>
 
         <strong>
-          Dapat 65
+          Receive RM65
         </strong>
 
         <b>
-          OUT 195
+          Cash Out RM195
         </b>
 
       </div>
@@ -829,24 +688,22 @@ const bonuses = {
       <div class="detail-row">
 
         <span>
-          IN 100
+          Deposit RM100
         </span>
 
         <strong>
-          Dapat 150
+          Receive RM150
         </strong>
 
         <b>
-          OUT 450
+          Cash Out RM450
         </b>
 
       </div>
 
 
       <div class="detail-note">
-
-        🎰 Only Slot ×3
-
+        🎰 Slots Only ×3
       </div>
 
     `
@@ -858,19 +715,18 @@ const bonuses = {
 
     icon:"💰",
 
-    title:
-      "Refund 1 Kali",
+    title:"One-Time Refund",
 
     html:`
 
       <div class="refund-detail-row">
 
         <span>
-          IN 30 kalah
+          Deposit RM30 Lost
         </span>
 
         <strong>
-          Refund 10
+          Refund RM10
         </strong>
 
       </div>
@@ -879,11 +735,11 @@ const bonuses = {
       <div class="refund-detail-row">
 
         <span>
-          IN 50 kalah
+          Deposit RM50 Lost
         </span>
 
         <strong>
-          Refund 20
+          Refund RM20
         </strong>
 
       </div>
@@ -892,11 +748,11 @@ const bonuses = {
       <div class="refund-detail-row">
 
         <span>
-          IN 100 kalah
+          Deposit RM100 Lost
         </span>
 
         <strong>
-          Refund 30
+          Refund RM30
         </strong>
 
       </div>
@@ -904,11 +760,11 @@ const bonuses = {
 
       <div class="detail-note">
 
-        No Turn Over
+        No Turnover
 
         <br>
 
-        🎮 Semua game boleh main
+        🎮 All games are available
 
       </div>
 
@@ -919,121 +775,520 @@ const bonuses = {
 };
 
 
-/* =================================
-   BONUS MODAL
-================================= */
-
 const bonusModal =
   document.getElementById(
     "bonusModal"
   );
 
 
-const bonusOverlay =
+document
+.querySelectorAll(
+  ".bonus-card"
+)
+.forEach(
+  card => {
+
+    card.addEventListener(
+      "click",
+      function(){
+
+        const bonus =
+          bonuses[
+            this.dataset.bonus
+          ];
+
+
+        if(!bonus){
+          return;
+        }
+
+
+        document
+        .getElementById(
+          "popupBonusIcon"
+        )
+        .textContent =
+          bonus.icon;
+
+
+        document
+        .getElementById(
+          "bonusModalTitle"
+        )
+        .textContent =
+          bonus.title;
+
+
+        document
+        .getElementById(
+          "bonusDetailContent"
+        )
+        .innerHTML =
+          bonus.html;
+
+
+        openModal(
+          bonusModal
+        );
+
+      }
+    );
+
+  }
+);
+
+
+document
+.getElementById(
+  "bonusClose"
+)
+.addEventListener(
+  "click",
+  () => {
+
+    closeModal(
+      bonusModal
+    );
+
+  }
+);
+
+
+document
+.getElementById(
+  "bonusOverlay"
+)
+.addEventListener(
+  "click",
+  () => {
+
+    closeModal(
+      bonusModal
+    );
+
+  }
+);
+
+
+/* MEMBER REWARD */
+
+const rewards = {
+
+  daily:{
+
+    icon:"📅",
+
+    title:"Daily Cash Rebate",
+
+    html:`
+
+      <div class="reward-intro">
+
+        Every top-up earns
+        <strong>
+          Lucky Duit Points
+        </strong>.
+
+      </div>
+
+
+      <div class="reward-highlight">
+
+        Once you reach
+
+        <strong>
+          4,000 Lucky Duit Points
+        </strong>,
+
+        you can exchange them for
+
+        <strong>
+          RM20 credit
+        </strong>
+
+        into your game ID.
+
+      </div>
+
+
+      <div class="reward-detail-row">
+
+        <span>
+          4,000 Points
+        </span>
+
+        <strong>
+          RM20 ID Credit
+        </strong>
+
+      </div>
+
+
+      <div class="reward-highlight">
+
+        When your points reach
+
+        <strong>
+          5,000 or more
+        </strong>,
+
+        you can claim the available
+        cash reward based on your
+        point balance.
+
+      </div>
+
+
+      <div class="reward-detail-row">
+
+        <span>
+          5,000 Points
+        </span>
+
+        <strong>
+          RM12 Cash
+        </strong>
+
+      </div>
+
+
+      <div class="reward-detail-row">
+
+        <span>
+          10,000 Points
+        </span>
+
+        <strong>
+          RM25 Cash
+        </strong>
+
+      </div>
+
+
+      <div class="reward-detail-row">
+
+        <span>
+          20,000 Points
+        </span>
+
+        <strong>
+          RM50 Cash
+        </strong>
+
+      </div>
+
+
+      <div class="reward-detail-row">
+
+        <span>
+          50,000 Points
+        </span>
+
+        <strong>
+          RM125 Cash
+        </strong>
+
+      </div>
+
+
+      <div class="claim-limit">
+
+        <span class="claim-limit-title">
+          Lucky Duit Claim Point
+        </span>
+
+
+        <div class="claim-limit-grid">
+
+          <div class="claim-limit-box">
+
+            <span>
+              MIN OUT
+            </span>
+
+            <strong>
+              RM100
+            </strong>
+
+          </div>
+
+
+          <div class="claim-limit-box">
+
+            <span>
+              MAX OUT
+            </span>
+
+            <strong>
+              RM388
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `
+
+  },
+
+
+  weekly:{
+
+    icon:"🎁",
+
+    title:"Weekly Random Bonus",
+
+    html:`
+
+      <div class="reward-intro">
+
+        The Weekly Random Bonus is a
+
+        <strong>
+          weekly rebate reward
+        </strong>
+
+        for eligible HTM125 members.
+
+      </div>
+
+
+      <div class="reward-time">
+        📅 Claim every Sunday
+      </div>
+
+
+      <div class="reward-time">
+        ⏰ 11:00 AM – 11:00 PM
+      </div>
+
+
+      <div class="reward-highlight">
+
+        Members can check their rebate
+        points through the special link
+        provided by HTM125 Customer Service.
+
+      </div>
+
+    `
+
+  },
+
+
+  friend:{
+
+    icon:"👥",
+
+    title:"Weekly Friend Bonus",
+
+    html:`
+
+      <div class="reward-intro">
+
+        The Weekly Friend Bonus rewards
+        members who refer active players
+        to HTM125.
+
+      </div>
+
+
+      <div class="reward-highlight">
+
+        When your referred members
+        continue to play and remain active,
+        you can earn
+
+        <strong>
+          Friend Bonus Points
+        </strong>.
+
+      </div>
+
+
+      <div class="reward-time">
+        📅 Claim every Saturday
+      </div>
+
+
+      <div class="reward-time">
+        ⏰ 11:00 AM – 11:00 PM
+      </div>
+
+    `
+
+  },
+
+
+  refer:{
+
+    icon:"🤝",
+
+    title:"Referral Bonus 20%",
+
+    html:`
+
+      <div class="reward-intro">
+
+        Refer a new member to HTM125
+        and receive a
+
+        <strong>
+          20% referral bonus
+        </strong>
+
+        from their first top-up.
+
+      </div>
+
+
+      <div class="reward-highlight">
+
+        This bonus applies only to the
+        referred member's
+
+        <strong>
+          first top-up
+        </strong>
+
+        and can only be claimed
+
+        <strong>
+          once per referred member
+        </strong>.
+
+      </div>
+
+
+      <div class="reward-example">
+
+        <strong>
+          Example
+        </strong>
+
+        <br><br>
+
+        First Top-Up:
+
+        <strong>
+          RM300
+        </strong>
+
+        <br>
+
+        Referral Bonus 20%:
+
+        <strong>
+          RM60
+        </strong>
+
+      </div>
+
+    `
+
+  }
+
+};
+
+
+const rewardModal =
   document.getElementById(
-    "bonusOverlay"
-  );
-
-
-const bonusClose =
-  document.getElementById(
-    "bonusClose"
-  );
-
-
-const bonusModalTitle =
-  document.getElementById(
-    "bonusModalTitle"
-  );
-
-
-const popupBonusIcon =
-  document.getElementById(
-    "popupBonusIcon"
-  );
-
-
-const bonusDetailContent =
-  document.getElementById(
-    "bonusDetailContent"
+    "rewardModal"
   );
 
 
 document
-  .querySelectorAll(
-    ".bonus-card"
-  )
-  .forEach(
-    card => {
+.querySelectorAll(
+  ".reward-card[data-reward]"
+)
+.forEach(
+  card => {
 
-      card.addEventListener(
-        "click",
-        function(){
+    card.addEventListener(
+      "click",
+      function(){
 
-          const bonus =
-            bonuses[
-              this.dataset.bonus
-            ];
-
-
-          if(!bonus){
-            return;
-          }
+        const reward =
+          rewards[
+            this.dataset.reward
+          ];
 
 
-          popupBonusIcon
-            .textContent =
-              bonus.icon;
-
-
-          bonusModalTitle
-            .textContent =
-              bonus.title;
-
-
-          bonusDetailContent
-            .innerHTML =
-              bonus.html;
-
-
-          openModal(
-            bonusModal
-          );
-
+        if(!reward){
+          return;
         }
-      );
-
-    }
-  );
 
 
-bonusClose.addEventListener(
-  "click",
-  () => {
+        document
+        .getElementById(
+          "rewardIcon"
+        )
+        .textContent =
+          reward.icon;
 
-    closeModal(
-      bonusModal
+
+        document
+        .getElementById(
+          "rewardTitle"
+        )
+        .textContent =
+          reward.title;
+
+
+        document
+        .getElementById(
+          "rewardContent"
+        )
+        .innerHTML =
+          reward.html;
+
+
+        openModal(
+          rewardModal
+        );
+
+      }
     );
 
   }
 );
 
 
-bonusOverlay.addEventListener(
+document
+.getElementById(
+  "rewardClose"
+)
+.addEventListener(
   "click",
   () => {
 
     closeModal(
-      bonusModal
+      rewardModal
     );
 
   }
 );
 
 
-/* =================================
-   GAME
-================================= */
+document
+.getElementById(
+  "rewardOverlay"
+)
+.addEventListener(
+  "click",
+  () => {
+
+    closeModal(
+      rewardModal
+    );
+
+  }
+);
+
+
+/* GAME */
 
 const gameGrid =
   document.getElementById(
@@ -1044,18 +1299,6 @@ const gameGrid =
 const gameModal =
   document.getElementById(
     "gameModal"
-  );
-
-
-const gameOverlay =
-  document.getElementById(
-    "gameOverlay"
-  );
-
-
-const gameClose =
-  document.getElementById(
-    "gameClose"
   );
 
 
@@ -1126,13 +1369,10 @@ function getShortName(name){
 }
 
 
-/* =================================
-   CREATE GAME CARDS
-================================= */
-
 function createGameCards(){
 
-  gameGrid.innerHTML = "";
+  gameGrid.innerHTML =
+    "";
 
 
   games.forEach(
@@ -1152,10 +1392,6 @@ function createGameCards(){
         "game-card reveal-game";
 
 
-      /*
-        SMOOTH STAGGER
-      */
-
       card.style.transitionDelay =
         `${Math.min(
           index * .025,
@@ -1163,7 +1399,7 @@ function createGameCards(){
         )}s`;
 
 
-      const shortName =
+      const short =
         getShortName(
           game.name
         );
@@ -1174,11 +1410,8 @@ function createGameCards(){
         <div class="game-image-wrap">
 
           <div class="default-game-logo">
-
-            ${shortName}
-
+            ${short}
           </div>
-
 
           <img
             src="${game.image}"
@@ -1188,11 +1421,9 @@ function createGameCards(){
 
         </div>
 
-
         <h3>
           ${game.name}
         </h3>
-
 
         <span>
           PLAY NOW
@@ -1207,63 +1438,44 @@ function createGameCards(){
         );
 
 
-      const defaultLogo =
+      const fallback =
         card.querySelector(
           ".default-game-logo"
         );
 
 
-      /*
-        LOGO BERHASIL LOAD
-      */
-
       image.addEventListener(
         "load",
         () => {
 
-          defaultLogo
-            .style
-            .display =
-              "none";
+          fallback.style.display =
+            "none";
 
         }
       );
 
-
-      /*
-        LOGO BELUM ADA
-      */
 
       image.addEventListener(
         "error",
         () => {
 
-          image
-            .style
-            .display =
-              "none";
+          image.style.display =
+            "none";
 
 
-          defaultLogo
-            .style
-            .display =
-              "flex";
+          fallback.style.display =
+            "flex";
 
         }
       );
 
 
-      /*
-        OPEN GAME POPUP
-      */
-
       card.addEventListener(
         "click",
         () => {
 
-          modalGameName
-            .textContent =
-              game.name;
+          modalGameName.textContent =
+            game.name;
 
 
           openModal(
@@ -1286,11 +1498,6 @@ function createGameCards(){
 
 }
 
-
-/* =================================
-   GAME REVEAL
-   SMOOTH + REPEAT
-================================= */
 
 function observeGameCards(){
 
@@ -1331,74 +1538,15 @@ function observeGameCards(){
         entries.forEach(
           entry => {
 
-            const card =
-              entry.target;
-
-
-            /*
-              MASUK VIEWPORT
-            */
-
             if(
               entry.isIntersecting
             ){
 
-              requestAnimationFrame(
-                () => {
-
-                  card
-                    .classList
-                    .add(
-                      "game-visible"
-                    );
-
-                }
+              entry.target
+              .classList
+              .add(
+                "game-visible"
               );
-
-
-              return;
-
-            }
-
-
-            const rect =
-              card
-                .getBoundingClientRect();
-
-
-            /*
-              SCROLL KE ATAS
-            */
-
-            if(
-              scrollDirection === "up" &&
-              rect.top >
-              window.innerHeight + 150
-            ){
-
-              card
-                .classList
-                .remove(
-                  "game-visible"
-                );
-
-            }
-
-
-            /*
-              SCROLL KE BAWAH
-            */
-
-            if(
-              scrollDirection === "down" &&
-              rect.bottom < -150
-            ){
-
-              card
-                .classList
-                .remove(
-                  "game-visible"
-                );
 
             }
 
@@ -1411,7 +1559,7 @@ function observeGameCards(){
         threshold:.05,
 
         rootMargin:
-          "100px 0px 100px 0px"
+          "100px 0px"
       }
 
     );
@@ -1430,11 +1578,11 @@ function observeGameCards(){
 }
 
 
-/* =================================
-   GAME MODAL CLOSE
-================================= */
-
-gameClose.addEventListener(
+document
+.getElementById(
+  "gameClose"
+)
+.addEventListener(
   "click",
   () => {
 
@@ -1446,7 +1594,11 @@ gameClose.addEventListener(
 );
 
 
-gameOverlay.addEventListener(
+document
+.getElementById(
+  "gameOverlay"
+)
+.addEventListener(
   "click",
   () => {
 
@@ -1458,114 +1610,75 @@ gameOverlay.addEventListener(
 );
 
 
-/* =================================
-   SMOOTH MODAL OPEN
-================================= */
+/* MODAL */
 
 function openModal(modal){
 
   document
-    .querySelectorAll(
-      ".modal.active"
-    )
-    .forEach(
-      activeModal => {
+  .querySelectorAll(
+    ".modal.active"
+  )
+  .forEach(
+    activeModal => {
 
-        if(
-          activeModal !== modal
-        ){
+      if(
+        activeModal !== modal
+      ){
 
-          activeModal
-            .classList
-            .remove(
-              "active"
-            );
-
-        }
+        activeModal.classList.remove(
+          "active"
+        );
 
       }
-    );
 
-
-  /*
-    Force render sebelum
-    animation dimulai
-  */
-
-  modal.offsetHeight;
+    }
+  );
 
 
   requestAnimationFrame(
     () => {
 
-      requestAnimationFrame(
-        () => {
-
-          modal
-            .classList
-            .add(
-              "active"
-            );
-
-        }
+      modal.classList.add(
+        "active"
       );
 
     }
   );
 
 
-  document.body
-    .style
-    .overflow =
-      "hidden";
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
-/* =================================
-   SMOOTH MODAL CLOSE
-================================= */
-
 function closeModal(modal){
 
-  modal
-    .classList
-    .remove(
-      "active"
-    );
+  modal.classList.remove(
+    "active"
+  );
 
 
-  window.setTimeout(
+  setTimeout(
     () => {
 
-      const activeModal =
-        document.querySelector(
-          ".modal.active"
-        );
-
-
       if(
-        !activeModal
+        !document.querySelector(
+          ".modal.active"
+        )
       ){
 
-        document.body
-          .style
-          .overflow =
-            "";
+        document.body.style.overflow =
+          "";
 
       }
 
     },
-
-    420
+    350
   );
 
 }
 
-
-/* =================================
-   ESC CLOSE
-================================= */
 
 document.addEventListener(
   "keydown",
@@ -1576,18 +1689,18 @@ document.addEventListener(
     ){
 
       document
-        .querySelectorAll(
-          ".modal.active"
-        )
-        .forEach(
-          modal => {
+      .querySelectorAll(
+        ".modal.active"
+      )
+      .forEach(
+        modal => {
 
-            closeModal(
-              modal
-            );
+          closeModal(
+            modal
+          );
 
-          }
-        );
+        }
+      );
 
     }
 
@@ -1595,9 +1708,7 @@ document.addEventListener(
 );
 
 
-/* =================================
-   START WEBSITE
-================================= */
+/* START */
 
 generateTransactions();
 
